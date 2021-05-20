@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Nunito, sans-serif;
+  background: #f5f6f7;
+}
+
+main {
+  margin: auto;
+  padding: 2rem 1rem;
+}
+
+main > h1 {
+  text-align: center;
+}
+.todo-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: auto;
+}
+.todo-list {
+  list-style-type: none;
+}
+.delete-todo {
+  padding: 4px 10px;
+  cursor: pointer;
+  margin: 5px;
+}
+.todo-completed {
+  text-decoration: overline;
+}
+.todo-checkbox {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+}
+.todo-checkbox:checked ~ li{
+  text-decoration: line-through;
+}
+.todo-list  li {
+  display: inline-block;
+}
