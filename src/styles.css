@@ -40,9 +40,9 @@ main > h1 {
   width: 25px;
   height: 25px;
 }
-.todo-checkbox:checked ~ li{
+li.todo-completed {
   text-decoration: line-through;
 }
-.todo-list  li {
+.todo-list li {
   display: inline-block;
 }

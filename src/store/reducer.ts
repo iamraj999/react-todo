@@ -20,12 +20,16 @@ export const reducer = (state = { todos: [] }, action) => {
         todos: updated,
       };
     case actionTypes.Complete_Todo:
-      state.todos.forEach((todo) => {
-        if (todo.id == action.payload.id) {
-          return (todo = action.payload);
+      let updatedTodos = state.todos.map((item, index) => {
+        if (item.id !== action.payload.id) {
+          return item;
         }
+        return {
+          ...item,
+          ...action.payload,
+        };
       });
-      return {...state, todos: state.todos}
+      return { ...state, todos: updatedTodos };
     default:
       return state;
   }
