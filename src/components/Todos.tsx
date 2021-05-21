@@ -39,13 +39,6 @@ class Todos extends React.Component<any, any> {
     this.props.loadTodos();
   }
   render() {
-    if (this.props.loading) {
-      return (
-        <main>
-          <CircularProgress />
-        </main>
-      );
-    }
     return (
       <main>
         <input
@@ -61,6 +54,7 @@ class Todos extends React.Component<any, any> {
           Add Todo
         </button>
         <button onClick={this.loadTodos}>Load from api</button>
+        {this.props.loading ?<main><CircularProgress /></main> : null}
         <ul className="todo-list">
           {this.props.todos.map((todo) => {
             const id = todo.id.toString();
@@ -90,7 +84,7 @@ class Todos extends React.Component<any, any> {
   }
 }
 const mapStateToProps = (state) => {
-  return { todos: state.todos };
+  return { todos: state.todos, loading: state.loading };
 };
 const mapDispatchToProps = (dispatch) => {
   return {

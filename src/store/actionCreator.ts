@@ -30,5 +30,7 @@ export const Complete_Todo = (payload) =>{
 }
 export const loadTodos = () => dispatch => {
   dispatch({ type:actionTypes.apiLoading });
-  Api.getTodos().then(response => response.json()).then(data => dispatch({ type: actionTypes.apiLoaded, data }), error => dispatch({ type: actionTypes.apiError, error: error.message || 'Unexpected Error!!!' }))
+  setTimeout(() => {
+    Api.getTodos().then(response => response.json()).then(data => dispatch({ type: actionTypes.apiLoaded, data }), error => dispatch({ type: actionTypes.apiError, error: error.message || 'Unexpected Error!!!' }))
+  }, 500);
 };
