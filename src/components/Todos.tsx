@@ -1,7 +1,12 @@
 import * as React from "react";
-import { AddTodo, Delete_Todo, Complete_Todo } from "../store/actionCreator";
+import {
+  AddTodo,
+  Delete_Todo,
+  Complete_Todo,
+  loadTodos,
+} from "../store/actionCreator";
 import { connect } from "react-redux";
-import { Checkbox } from "@material-ui/core";
+import { CircularProgress } from "@material-ui/core";
 
 class Todos extends React.Component<any, any> {
   constructor(props) {
@@ -13,6 +18,7 @@ class Todos extends React.Component<any, any> {
     this.addTodo = this.addTodo.bind(this);
     this.deleteTodo = this.deleteTodo.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.loadTodos = this.loadTodos.bind(this);
   }
   handleChange(e) {
     this.setState({ title: e.target.value });
@@ -29,7 +35,17 @@ class Todos extends React.Component<any, any> {
     todo.completed = e.target.checked;
     this.props.completeTodo(todo);
   }
+  loadTodos() {
+    this.props.loadTodos();
+  }
   render() {
+    if (this.props.loading) {
+      return (
+        <main>
+          <CircularProgress />
+        </main>
+      );
+    }
     return (
       <main>
         <input
@@ -44,6 +60,7 @@ class Todos extends React.Component<any, any> {
         >
           Add Todo
         </button>
+        <button onClick={this.loadTodos}>Load from api</button>
         <ul className="todo-list">
           {this.props.todos.map((todo) => {
             const id = todo.id.toString();
@@ -53,6 +70,7 @@ class Todos extends React.Component<any, any> {
                   className="todo-checkbox"
                   type="checkbox"
                   onChange={(e) => this.completeTodo(e, todo)}
+                  checked={todo.completed}
                 />
                 <button
                   className="delete-todo"
@@ -79,6 +97,7 @@ const mapDispatchToProps = (dispatch) => {
     addTodo: (todo) => dispatch(AddTodo(todo)),
     deleteTodo: (id) => dispatch(Delete_Todo(id)),
     completeTodo: (todo) => dispatch(Complete_Todo(todo)),
+    loadTodos: () => dispatch(loadTodos()),
   };
 };
 const TodoComponent = connect(mapStateToProps, mapDispatchToProps)(Todos);

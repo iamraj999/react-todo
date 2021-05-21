@@ -30,6 +30,15 @@ export const reducer = (state = { todos: [] }, action) => {
         };
       });
       return { ...state, todos: updatedTodos };
+    case actionTypes.apiLoading: {
+      return { ...state, loading: true, error: "" };
+    }
+    case actionTypes.apiLoaded: {
+      return { ...state, todos: action.data, loading: false };
+    }
+    case actionTypes.apiError: {
+      return { ...state, loading: false, error: action.error };
+    }
     default:
       return state;
   }
