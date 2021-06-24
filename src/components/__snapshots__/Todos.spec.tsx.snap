@@ -8,12 +8,6 @@ exports[`Todos Component renders correctly 1`] = `
     placeholder="Add Todo title"
     value=""
   />
-  <a
-    className="raj"
-    href="/home"
-  >
-    hi
-  </a>
   <button
     className="addButton"
     disabled={true}
