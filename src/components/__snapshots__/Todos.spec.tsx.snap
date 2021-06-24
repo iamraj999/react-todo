@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Todos Component renders correctly 1`] = `
+<main>
+  <input
+    id="title"
+    onChange={[Function]}
+    placeholder="Add Todo title"
+    value=""
+  />
+  <a
+    className="raj"
+    href="/home"
+  >
+    hi
+  </a>
+  <button
+    className="addButton"
+    disabled={true}
+    onClick={[Function]}
+  >
+    Add Todo
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    Load from api
+  </button>
+  <ul
+    className="todo-list"
+  />
+</main>
+`;
