@@ -1,7 +1,7 @@
 import * as actionTypes from "./actionType";
 
 let id = 0;
-export const reducer = (state = { todos: [] }, action) => {
+export const reducer = (state = { todos: [], loading: false, error: '' }, action) => {
   switch (action.type) {
     case actionTypes.Add_Todo:
       id = id + 1;
